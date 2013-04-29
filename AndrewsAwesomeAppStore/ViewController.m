@@ -9,11 +9,7 @@
 #import "ViewController.h"
 
 
-@interface ViewController () <UITextFieldDelegate>
-@property(nonatomic, weak) IBOutlet UIToolbar *toolbar;
-@property(nonatomic, weak) IBOutlet UIBarButtonItem *shareButton;
-@property(nonatomic, weak) IBOutlet UITextField *textField;
-- (IBAction)shareButtonTapped:(id)sender;
+@interface ViewController ()
 @end
 
 @implementation ViewController
@@ -22,16 +18,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(IBAction)shareButtonTapped:(id)sender {
-    // TODO
 }
 
 @end
