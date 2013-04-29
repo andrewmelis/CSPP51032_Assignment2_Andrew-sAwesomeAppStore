@@ -1,18 +1,18 @@
 //
-//  CollectionViewController.m
+//  MainViewController.m
 //  AndrewsAwesomeAppStore
 //
 //  Created by Andrew Melis on 4/28/13.
 //  Copyright (c) 2013 Baller Status Inc. All rights reserved.
 //
 
-#import "CollectionViewController.h"
+#import "MainViewController.h"
 
-@interface CollectionViewController ()
+@interface MainViewController ()
 
 @end
 
-@implementation CollectionViewController
+@implementation MainViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,20 +28,22 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 10;
+    return 30;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NormalCell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor purpleColor];
+
     return cell;
+
 }
-
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;   //TODO change to 5 for each of 5 stars
-}
-
 
 - (void)didReceiveMemoryWarning
 {
