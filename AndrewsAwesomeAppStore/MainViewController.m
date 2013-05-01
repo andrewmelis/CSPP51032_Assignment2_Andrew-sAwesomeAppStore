@@ -44,7 +44,7 @@
 
     [[self collectionView]setDelegate:self];
     [[self collectionView]setDataSource:self];
-    testArray = [[NSMutableArray alloc]init];
+    testArray = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
     
     
     appIcons = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
@@ -68,13 +68,25 @@
     static NSString *CellIdentifier = @"AppCell";
     
     AppCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    
+//    if(!cell)                                                     TODO: don't need this stuff, right?
+//    {
+//        cell = [collectionView all]
+//    }
+    
     cell.backgroundColor = [UIColor purpleColor];
-    
-    
     [[cell appIcon]setImage:[UIImage imageNamed:[appIcons objectAtIndex:indexPath.item]]];
     
-//    [[cell nameLabel]setText:[testArray objectAtIndex:indexPath.item]];
-    [[cell nameLabel]setText:[appNames objectAtIndex:indexPath.item]];
+    if(testArray[0] != NULL)
+    {
+        [[cell nameLabel]setText:[testArray objectAtIndex:indexPath.item]];
+    }
+    else {
+        [[cell nameLabel]setText:[appNames objectAtIndex:indexPath.item]];    
+    }
+
+
     
     [[cell devLabel]setText:[appNames objectAtIndex:indexPath.item]];
     [[cell starLabel]setText:[appNames objectAtIndex:indexPath.item]];
@@ -115,7 +127,9 @@
 }
 - (IBAction)sortButton:(UIButton *)sender {
     
-    NSURL *url = [NSURL URLWithString:@"http://jsonviewer.stack.hu/#http://itunes.apple.com/search?term=angry&country=us&entity=software"];
+    [testArray removeAllObjects];
+    
+    NSURL *url = [NSURL URLWithString:@"http://itunes.apple.com/search?term=angry&country=us&entity=software"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     connection = [NSURLConnection connectionWithRequest:request delegate:self];
