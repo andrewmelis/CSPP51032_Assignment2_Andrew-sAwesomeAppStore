@@ -10,6 +10,7 @@
 
 #import "MainViewController.h"
 #import "AppCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MainViewController ()
 {
@@ -54,6 +55,8 @@
     self.collectionView.dataSource = self;
     self.searchBar.delegate = self;
     
+    self.searchBar.placeholder = @"search for an app...";
+    
 //    totalStrings = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
     
     
@@ -87,7 +90,7 @@
     static NSString *CellIdentifier = @"AppCell";
     
     AppCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+
 
 
     if (!isFiltered) {
@@ -103,7 +106,7 @@
         [[cell nameLabel]setText:[filteredStrings objectAtIndex:indexPath.item]];       //TODO need to fix this to set all fields
         cell.backgroundColor = [UIColor brownColor];
     }
-    
+    cell.layer.cornerRadius=30;         //make it pretty
     return cell;
 
 }
@@ -132,6 +135,9 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    //write string to memory
+    //call helper function
+    
     //get rid of keyboard
     [self.searchBar resignFirstResponder];
 }
@@ -196,7 +202,14 @@
     {
         webData = [[NSMutableData alloc]init];
     }
-        
+    
+}
+
+-(NSString*)urlStringBulder:(UISearchBar*)searchBar {
+    NSString *urlString = [searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"+" options:NULL range:NSMakeRange(0,searchBar.text.length)];
+    
+    NSString *poop = [NSString stringWithFormat:@"http://itunes.apple.com/search?term=@%&country=us&entity=software",urlString];
+    return poop;
 }
 
 

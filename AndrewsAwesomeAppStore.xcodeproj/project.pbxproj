@@ -21,6 +21,7 @@
 		2802AC06172E04A700F70279 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2802AC05172E04A700F70279 /* ViewController.m */; };
 		2802AC11172E254600F70279 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2802AC10172E254600F70279 /* MainViewController.m */; };
 		28A260AD173109090063AF28 /* AppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A260AC173109090063AF28 /* AppCell.m */; };
+		28A260AF17313A810063AF28 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A260AE17313A810063AF28 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		2802AC10172E254600F70279 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		28A260AB173109090063AF28 /* AppCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCell.h; sourceTree = "<group>"; };
 		28A260AC173109090063AF28 /* AppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCell.m; sourceTree = "<group>"; };
+		28A260AE17313A810063AF28 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A260AF17313A810063AF28 /* QuartzCore.framework in Frameworks */,
 				2802ABE7172E04A700F70279 /* UIKit.framework in Frameworks */,
 				2802ABE9172E04A700F70279 /* Foundation.framework in Frameworks */,
 				2802ABEB172E04A700F70279 /* CoreGraphics.framework in Frameworks */,
@@ -64,6 +67,7 @@
 		2802ABDA172E04A700F70279 = {
 			isa = PBXGroup;
 			children = (
+				28A260AE17313A810063AF28 /* QuartzCore.framework */,
 				2802ABEC172E04A700F70279 /* AndrewsAwesomeAppStore */,
 				2802ABE5172E04A700F70279 /* Frameworks */,
 				2802ABE4172E04A700F70279 /* Products */,
