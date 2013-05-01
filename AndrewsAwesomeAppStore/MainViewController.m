@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Baller Status Inc. All rights reserved.
 //
 
+//special thanks to iffytheperfect1983's youtube tutorials
+
 #import "MainViewController.h"
 #import "AppCell.h"
 
@@ -44,7 +46,7 @@
 
     [[self collectionView]setDelegate:self];
     [[self collectionView]setDataSource:self];
-    testArray = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
+//    testArray = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
     
     
     appIcons = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
@@ -59,8 +61,9 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
-//    return [appNames count];      TODO Do I want to set dynamically?
+//    return 5;
+    return [appNames count];      //TODO Do I want to set dynamically?
+//      return [testArray count];      //TODO Do I want to set dynamically?
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,28 +72,13 @@
     
     AppCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    
-//    if(!cell)                                                     TODO: don't need this stuff, right?
-//    {
-//        cell = [collectionView all]
-//    }
-    
     cell.backgroundColor = [UIColor purpleColor];
-    [[cell appIcon]setImage:[UIImage imageNamed:[appIcons objectAtIndex:indexPath.item]]];
+//    [[cell appIcon]setImage:[UIImage imageNamed:[appIcons objectAtIndex:indexPath.item]]];
     
-    if(testArray[0] != NULL)
-    {
-        [[cell nameLabel]setText:[testArray objectAtIndex:indexPath.item]];
-    }
-    else {
-        [[cell nameLabel]setText:[appNames objectAtIndex:indexPath.item]];    
-    }
-
-
-    
-    [[cell devLabel]setText:[appNames objectAtIndex:indexPath.item]];
-    [[cell starLabel]setText:[appNames objectAtIndex:indexPath.item]];
-    [[cell priceLabel]setText:[appNames objectAtIndex:indexPath.item]];
+    [[cell nameLabel]setText:[appNames objectAtIndex:indexPath.item]];
+    [[cell devLabel]setText:[NSString stringWithFormat:@"by %@",[appDevs objectAtIndex:indexPath.item]]];
+    [[cell starLabel]setText:[NSString stringWithFormat:@"Rating: %@/5",[appStars objectAtIndex:indexPath.item]]];
+    [[cell priceLabel]setText:[NSString stringWithFormat:@"$%@",[appPrices objectAtIndex:indexPath.item]]];
 
     return cell;
 
@@ -119,17 +107,32 @@
     
     for (NSDictionary *dictionary in results) {
         NSString *appName = [dictionary objectForKey:@"trackName"];
+        NSString *appStar = [dictionary objectForKey:@"averageUserRating"];
+        NSString *appDev = [dictionary objectForKey:@"artistName"];
+        NSString *appPrice = [dictionary objectForKey:@"price"];
+        [appNames addObject:appName];
+        [appStars addObject:appStar];
+        [appDevs addObject:appDev];
+        [appPrices addObject:appPrice];
         
-        [testArray addObject:appName];
+
+//        UIImage *appIcon = [dictionary objectForKey:@"artworkUrl512"];
+//        [appIcons addObject:appIcon];                                             //TODO get images working
+        NSLog(@"added stuff to arrays");
     }
     [[self collectionView]reloadData];
     
 }
 - (IBAction)sortButton:(UIButton *)sender {
     
-    [testArray removeAllObjects];
+    [appNames removeAllObjects];
+    [appStars removeAllObjects];
+    [appDevs removeAllObjects];
+    [appPrices removeAllObjects];
     
-    NSURL *url = [NSURL URLWithString:@"http://itunes.apple.com/search?term=angry&country=us&entity=software"];
+    NSString *urlString = @"http://itunes.apple.com/search?term=angry+dum+bum&country=us&entity=software";
+    
+    NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     connection = [NSURLConnection connectionWithRequest:request delegate:self];
