@@ -12,27 +12,74 @@
                         <rect key="frame" x="0.0" y="20" width="768" height="1004"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-cq-Nog">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-cq-Nog">
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="777" id="rGD-vN-24S"/>
+                                    <constraint firstAttribute="height" constant="690" id="Jhx-qE-RaB"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BNH-ah-bqL">
-                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="itemSize" width="150" height="230"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NormalCell" id="Cmg-fm-22v">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AppCell" id="Cmg-fm-22v" customClass="AppCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="230"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="230"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWK-O5-Xli">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="6jR-LD-fnm"/>
+                                                        <constraint firstAttribute="width" constant="100" id="9jT-9n-xVa"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="nameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crI-sc-ox3">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="devLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKo-Dk-D3q">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="starLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoo-Pg-6GU">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="priceLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQI-s8-8Db">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="VQI-s8-8Db" firstAttribute="top" secondItem="Yoo-Pg-6GU" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="1WG-sZ-jWp"/>
+                                            <constraint firstItem="CKo-Dk-D3q" firstAttribute="top" secondItem="crI-sc-ox3" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="KvS-xB-kqC"/>
+                                            <constraint firstItem="Yoo-Pg-6GU" firstAttribute="top" secondItem="CKo-Dk-D3q" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Q4P-dq-cd8"/>
+                                            <constraint firstItem="crI-sc-ox3" firstAttribute="top" secondItem="IWK-O5-Xli" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="WEk-pM-hg3"/>
+                                            <constraint firstItem="IWK-O5-Xli" firstAttribute="top" secondItem="Cmg-fm-22v" secondAttribute="top" type="default" id="WMa-av-oZh"/>
+                                            <constraint firstItem="CKo-Dk-D3q" firstAttribute="centerX" secondItem="crI-sc-ox3" secondAttribute="centerX" type="default" id="bZW-6h-iSU"/>
+                                            <constraint firstItem="VQI-s8-8Db" firstAttribute="centerX" secondItem="Yoo-Pg-6GU" secondAttribute="centerX" type="default" id="dZv-FL-lsN"/>
+                                            <constraint firstItem="crI-sc-ox3" firstAttribute="centerX" secondItem="IWK-O5-Xli" secondAttribute="centerX" type="default" id="pyy-NT-Ltd"/>
+                                            <constraint firstItem="Yoo-Pg-6GU" firstAttribute="centerX" secondItem="Cmg-fm-22v" secondAttribute="centerX" type="default" id="uwa-yk-7h3"/>
+                                            <constraint firstItem="Yoo-Pg-6GU" firstAttribute="centerX" secondItem="CKo-Dk-D3q" secondAttribute="centerX" type="default" id="w1P-wg-smf"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="appIcon" destination="IWK-O5-Xli" id="Bfe-PK-Czb"/>
+                                            <outlet property="devLabel" destination="CKo-Dk-D3q" id="ZFm-pX-S1N"/>
+                                            <outlet property="nameLabel" destination="crI-sc-ox3" id="1aJ-WZ-8Yt"/>
+                                            <outlet property="priceLabel" destination="VQI-s8-8Db" id="lwz-ZN-gfg"/>
+                                            <outlet property="starLabel" destination="Yoo-Pg-6GU" id="X1a-AK-JI4"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -40,16 +87,31 @@
                                     <outlet property="delegate" destination="5Tn-Bh-Ht8" id="CSv-YN-0dQ"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtK-Ig-qu4">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sort">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sortButton:" destination="5Tn-Bh-Ht8" eventType="touchUpInside" id="u7j-Wp-8aM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NWI-cq-Nog" firstAttribute="leading" secondItem="CHq-ws-ata" secondAttribute="leading" type="default" id="3la-ZX-1oA"/>
-                            <constraint firstItem="NWI-cq-Nog" firstAttribute="bottom" secondItem="CHq-ws-ata" secondAttribute="bottom" type="default" id="8IP-VT-R8N"/>
-                            <constraint firstItem="NWI-cq-Nog" firstAttribute="top" secondItem="CHq-ws-ata" secondAttribute="top" type="default" id="dfV-vO-vqD"/>
+                            <constraint firstItem="qtK-Ig-qu4" firstAttribute="centerX" secondItem="NWI-cq-Nog" secondAttribute="centerX" type="default" id="59N-5L-fJk"/>
+                            <constraint firstAttribute="bottom" secondItem="qtK-Ig-qu4" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Q8Y-hW-Ar4"/>
+                            <constraint firstItem="NWI-cq-Nog" firstAttribute="trailing" secondItem="CHq-ws-ata" secondAttribute="trailing" type="default" id="QJD-r6-I2i"/>
+                            <constraint firstItem="NWI-cq-Nog" firstAttribute="leading" secondItem="CHq-ws-ata" secondAttribute="leading" type="default" id="UPh-cb-WkF"/>
+                            <constraint firstItem="NWI-cq-Nog" firstAttribute="top" secondItem="CHq-ws-ata" secondAttribute="top" constant="212" id="zL2-ch-xZD"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="NWI-cq-Nog" id="FWR-J0-7yr"/>
+                        <outlet property="collectionView" destination="NWI-cq-Nog" id="9CI-OW-qaR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJR-PK-hhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -57,26 +119,6 @@
             <point key="canvasLocation" x="-101" y="-17"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="MainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
