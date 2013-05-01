@@ -17,14 +17,8 @@
     //itunes search api stuff
     NSMutableData *webData;
     NSURLConnection *connection;
-//    NSMutableArray *testArray;
-    
-    //for search bar
-    NSMutableArray *totalStrings;
-    NSMutableArray *filteredStrings;
-    BOOL isFiltered;
-    
-    //generic collectionview arrays
+
+    // collectionview arrays
     NSMutableArray *appIcons;
     NSMutableArray *appNames;
     NSMutableArray *appDevs;
@@ -57,12 +51,6 @@
     
     self.searchBar.placeholder = @"search for an app...";
     
-//    totalStrings = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
-    
-    
-    
-    
-//    testArray = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
     appIcons = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
     appNames = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
     appDevs = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
@@ -77,10 +65,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (isFiltered) {
-        return [filteredStrings count];      //TODO Do I want to set dynamically?
-    }
-    //else
+    
     return [appNames count];
     
 }
@@ -91,52 +76,39 @@
     
     AppCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
-
-
-    if (!isFiltered) {
+    [[cell nameLabel]setText:[appNames objectAtIndex:indexPath.item]];
+    [[cell devLabel]setText:[NSString stringWithFormat:@"by %@",[appDevs objectAtIndex:indexPath.item]]];
+    [[cell starLabel]setText:[NSString stringWithFormat:@"Rating: %@/5",[appStars objectAtIndex:indexPath.item]]];
+    [[cell priceLabel]setText:[NSString stringWithFormat:@"$%@",[appPrices objectAtIndex:indexPath.item]]];
     
-//    [[cell appIcon]setImage:[UIImage imageNamed:[appIcons objectAtIndex:indexPath.item]]];
-        [[cell nameLabel]setText:[appNames objectAtIndex:indexPath.item]];
-        [[cell devLabel]setText:[NSString stringWithFormat:@"by %@",[appDevs objectAtIndex:indexPath.item]]];
-        [[cell starLabel]setText:[NSString stringWithFormat:@"Rating: %@/5",[appStars objectAtIndex:indexPath.item]]];
-        [[cell priceLabel]setText:[NSString stringWithFormat:@"$%@",[appPrices objectAtIndex:indexPath.item]]];
-        cell.backgroundColor = [UIColor purpleColor];
-    }
-    else {
-        [[cell nameLabel]setText:[filteredStrings objectAtIndex:indexPath.item]];       //TODO need to fix this to set all fields
-        cell.backgroundColor = [UIColor brownColor];
-    }
+    cell.backgroundColor = [UIColor lightGrayColor];
     cell.layer.cornerRadius=30;         //make it pretty
     return cell;
 
-}
-
-//searchBar methods
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    if(searchText.length==0) {
-        isFiltered= NO;
-    }
-    else {
-        isFiltered = YES;
-        filteredStrings = [[NSMutableArray alloc]init];
-        
-        for(NSString *str in appNames) {
-            NSRange stringRange = [str rangeOfString:searchText options:NSCaseInsensitiveSearch];
-            
-            if(stringRange.location != NSNotFound) {
-                [filteredStrings addObject:str];
-            }
-        }
-    }
-    
-    [self.collectionView reloadData];
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     //write string to memory
     //call helper function
+    
+    [appNames removeAllObjects];
+    [appStars removeAllObjects];
+    [appDevs removeAllObjects];
+    [appPrices removeAllObjects];
+    
+    NSString *query = [_searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    NSString *urlString = [NSString stringWithFormat:@"http://itunes.apple.com/search?term=%@&country=us&entity=software",query];
+    NSURL *url = [NSURL URLWithString:urlString];
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    
+    if(connection)
+    {
+        webData = [[NSMutableData alloc]init];
+    }
     
     //get rid of keyboard
     [self.searchBar resignFirstResponder];
@@ -186,32 +158,9 @@
 //button refresh method
 - (IBAction)sortButton:(UIButton *)sender {
     
-    [appNames removeAllObjects];
-    [appStars removeAllObjects];
-    [appDevs removeAllObjects];
-    [appPrices removeAllObjects];
-    
-    NSString *urlString = @"http://itunes.apple.com/search?term=angry+dum+bum&country=us&entity=software";
-    
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    connection = [NSURLConnection connectionWithRequest:request delegate:self];
-    
-    if(connection)
-    {
-        webData = [[NSMutableData alloc]init];
-    }
+    //do stuff
     
 }
-
--(NSString*)urlStringBulder:(UISearchBar*)searchBar {
-    NSString *urlString = [searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"+" options:NULL range:NSMakeRange(0,searchBar.text.length)];
-    
-    NSString *poop = [NSString stringWithFormat:@"http://itunes.apple.com/search?term=@%&country=us&entity=software",urlString];
-    return poop;
-}
-
 
 - (void)didReceiveMemoryWarning
 {
