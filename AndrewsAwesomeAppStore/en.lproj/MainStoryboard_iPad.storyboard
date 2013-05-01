@@ -15,7 +15,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NWI-cq-Nog">
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="690" id="Jhx-qE-RaB"/>
+                                    <constraint firstAttribute="height" constant="858" id="6zy-WE-tFa"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BNH-ah-bqL">
                                     <size key="itemSize" width="150" height="230"/>
@@ -100,18 +100,25 @@
                                     <action selector="sortButton:" destination="5Tn-Bh-Ht8" eventType="touchUpInside" id="u7j-Wp-8aM"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4Vn-vQ-4mx">
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qtK-Ig-qu4" firstAttribute="centerX" secondItem="NWI-cq-Nog" secondAttribute="centerX" type="default" id="59N-5L-fJk"/>
+                            <constraint firstItem="NWI-cq-Nog" firstAttribute="top" secondItem="4Vn-vQ-4mx" secondAttribute="bottom" type="default" id="BOL-8C-pRV"/>
+                            <constraint firstItem="4Vn-vQ-4mx" firstAttribute="top" secondItem="CHq-ws-ata" secondAttribute="top" type="default" id="DSQ-3d-7V2"/>
+                            <constraint firstItem="4Vn-vQ-4mx" firstAttribute="trailing" secondItem="CHq-ws-ata" secondAttribute="trailing" type="default" id="OaE-AP-jkg"/>
                             <constraint firstAttribute="bottom" secondItem="qtK-Ig-qu4" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Q8Y-hW-Ar4"/>
                             <constraint firstItem="NWI-cq-Nog" firstAttribute="trailing" secondItem="CHq-ws-ata" secondAttribute="trailing" type="default" id="QJD-r6-I2i"/>
                             <constraint firstItem="NWI-cq-Nog" firstAttribute="leading" secondItem="CHq-ws-ata" secondAttribute="leading" type="default" id="UPh-cb-WkF"/>
-                            <constraint firstItem="NWI-cq-Nog" firstAttribute="top" secondItem="CHq-ws-ata" secondAttribute="top" constant="212" id="zL2-ch-xZD"/>
+                            <constraint firstItem="4Vn-vQ-4mx" firstAttribute="leading" secondItem="CHq-ws-ata" secondAttribute="leading" type="default" id="XrZ-fo-6Pk"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="NWI-cq-Nog" id="9CI-OW-qaR"/>
+                        <outlet property="searchBar" destination="4Vn-vQ-4mx" id="DKY-pn-r4x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJR-PK-hhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,6 +126,38 @@
             <point key="canvasLocation" x="-101" y="-17"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AppCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="appIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="devLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="starLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MainViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="sortButton:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
