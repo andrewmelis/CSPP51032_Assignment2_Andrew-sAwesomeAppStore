@@ -79,6 +79,7 @@
                                             <outlet property="nameLabel" destination="crI-sc-ox3" id="1aJ-WZ-8Yt"/>
                                             <outlet property="priceLabel" destination="VQI-s8-8Db" id="lwz-ZN-gfg"/>
                                             <outlet property="starLabel" destination="Yoo-Pg-6GU" id="X1a-AK-JI4"/>
+                                            <segue destination="5Kr-vW-rdT" kind="modal" identifier="ShowModalView" modalPresentationStyle="formSheet" id="a0E-qv-Lrs"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -127,41 +128,123 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TJR-PK-hhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-101" y="-17"/>
+            <point key="canvasLocation" x="-557" y="37"/>
+        </scene>
+        <!--Modal View Controller-->
+        <scene sceneID="DbD-HG-IPu">
+            <objects>
+                <viewController id="5Kr-vW-rdT" customClass="ModalViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rss-ND-8Zu">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="620"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4gm-uY-B2k">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="03i-mP-HOx"/>
+                                    <constraint firstAttribute="height" constant="200" id="ref-wc-ZJc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="nameLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeB-0V-qPb">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="devLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyJ-Cd-GPv">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="starLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAq-JF-Kba">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="priceLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov1-ea-ZNH">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="descriptionLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-Id-GHZ">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="57n-Hg-1tw">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="favoritesButton">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="favoriteButton:" destination="5Kr-vW-rdT" eventType="touchUpInside" id="Cul-on-9C3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZM-kL-p98">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="buyButton">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buyButton:" destination="5Kr-vW-rdT" eventType="touchUpInside" id="AQ0-8e-Qm8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9B-GU-oym">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="exitButton:" destination="5Kr-vW-rdT" eventType="touchUpInside" id="XI8-QI-gc6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tZM-kL-p98" firstAttribute="centerX" secondItem="rss-ND-8Zu" secondAttribute="centerX" type="default" id="1vu-VS-zYq"/>
+                            <constraint firstAttribute="bottom" secondItem="xV5-Id-GHZ" secondAttribute="bottom" constant="218" id="2Xp-rk-3FN"/>
+                            <constraint firstItem="qeB-0V-qPb" firstAttribute="top" secondItem="4gm-uY-B2k" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5aw-qt-XYI"/>
+                            <constraint firstItem="tZM-kL-p98" firstAttribute="centerX" secondItem="xV5-Id-GHZ" secondAttribute="centerX" type="default" id="7z5-Di-hW0"/>
+                            <constraint firstItem="57n-Hg-1tw" firstAttribute="top" secondItem="tZM-kL-p98" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Fci-jv-1xo"/>
+                            <constraint firstItem="ov1-ea-ZNH" firstAttribute="top" secondItem="JAq-JF-Kba" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="JnH-gT-7DT"/>
+                            <constraint firstItem="dyJ-Cd-GPv" firstAttribute="top" secondItem="qeB-0V-qPb" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Mzg-qZ-Rtg"/>
+                            <constraint firstItem="h9B-GU-oym" firstAttribute="leading" secondItem="rss-ND-8Zu" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="NFy-4B-1lx"/>
+                            <constraint firstItem="4gm-uY-B2k" firstAttribute="top" secondItem="rss-ND-8Zu" secondAttribute="top" constant="20" symbolic="YES" type="default" id="TmM-KQ-HmY"/>
+                            <constraint firstAttribute="bottom" secondItem="h9B-GU-oym" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="WvD-ep-olw"/>
+                            <constraint firstItem="qeB-0V-qPb" firstAttribute="centerX" secondItem="4gm-uY-B2k" secondAttribute="centerX" type="default" id="Zq6-JM-7eW"/>
+                            <constraint firstItem="dyJ-Cd-GPv" firstAttribute="leading" secondItem="JAq-JF-Kba" secondAttribute="leading" type="default" id="aUe-6n-S3d"/>
+                            <constraint firstItem="JAq-JF-Kba" firstAttribute="top" secondItem="dyJ-Cd-GPv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kDR-Az-G3S"/>
+                            <constraint firstAttribute="bottom" secondItem="57n-Hg-1tw" secondAttribute="bottom" constant="43" id="nHv-1O-Xxc"/>
+                            <constraint firstItem="ov1-ea-ZNH" firstAttribute="centerX" secondItem="JAq-JF-Kba" secondAttribute="centerX" type="default" id="qSi-xO-AmK"/>
+                            <constraint firstItem="dyJ-Cd-GPv" firstAttribute="centerX" secondItem="qeB-0V-qPb" secondAttribute="centerX" type="default" id="vgg-eR-B77"/>
+                            <constraint firstItem="tZM-kL-p98" firstAttribute="centerX" secondItem="57n-Hg-1tw" secondAttribute="centerX" type="default" id="wRs-nR-Blc"/>
+                            <constraint firstItem="xV5-Id-GHZ" firstAttribute="centerX" secondItem="ov1-ea-ZNH" secondAttribute="centerX" type="default" id="xcl-10-acq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="modalDescription" destination="xV5-Id-GHZ" id="TV7-Wm-bp4"/>
+                        <outlet property="modalDev" destination="dyJ-Cd-GPv" id="nqi-on-zkv"/>
+                        <outlet property="modalIcon" destination="4gm-uY-B2k" id="cz1-ZU-UV5"/>
+                        <outlet property="modalName" destination="qeB-0V-qPb" id="2nw-K2-OGH"/>
+                        <outlet property="modalPrice" destination="ov1-ea-ZNH" id="afM-iR-di5"/>
+                        <outlet property="modalStars" destination="JAq-JF-Kba" id="ufc-hD-evr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sM6-b0-TAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="477" y="239"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AppCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AppCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="appIcon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="devLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="priceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="starLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MainViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="sortButton:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

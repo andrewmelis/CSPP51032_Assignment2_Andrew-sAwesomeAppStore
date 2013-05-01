@@ -22,6 +22,7 @@
 		2802AC11172E254600F70279 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2802AC10172E254600F70279 /* MainViewController.m */; };
 		28A260AD173109090063AF28 /* AppCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A260AC173109090063AF28 /* AppCell.m */; };
 		28A260AF17313A810063AF28 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A260AE17313A810063AF28 /* QuartzCore.framework */; };
+		28A260B217318A840063AF28 /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A260B117318A840063AF28 /* ModalViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		28A260AB173109090063AF28 /* AppCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCell.h; sourceTree = "<group>"; };
 		28A260AC173109090063AF28 /* AppCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppCell.m; sourceTree = "<group>"; };
 		28A260AE17313A810063AF28 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		28A260B017318A840063AF28 /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
+		28A260B117318A840063AF28 /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,8 @@
 				2802ABF6172E04A700F70279 /* AppDelegate.m */,
 				2802ABFE172E04A700F70279 /* MainStoryboard_iPhone.storyboard */,
 				2802AC01172E04A700F70279 /* MainStoryboard_iPad.storyboard */,
+				28A260B017318A840063AF28 /* ModalViewController.h */,
+				28A260B117318A840063AF28 /* ModalViewController.m */,
 				28A260AB173109090063AF28 /* AppCell.h */,
 				28A260AC173109090063AF28 /* AppCell.m */,
 				2802AC0F172E254600F70279 /* MainViewController.h */,
@@ -196,6 +201,7 @@
 				2802AC06172E04A700F70279 /* ViewController.m in Sources */,
 				2802AC11172E254600F70279 /* MainViewController.m in Sources */,
 				28A260AD173109090063AF28 /* AppCell.m in Sources */,
+				28A260B217318A840063AF28 /* ModalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

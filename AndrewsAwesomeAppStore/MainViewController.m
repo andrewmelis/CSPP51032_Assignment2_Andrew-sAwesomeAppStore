@@ -9,6 +9,7 @@
 //special thanks to iffytheperfect1983's youtube tutorials
 
 #import "MainViewController.h"
+#import "ModalViewController.h"
 #import "AppCell.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -24,6 +25,9 @@
     NSMutableArray *appDevs;
     NSMutableArray *appStars;
     NSMutableArray *appPrices;
+    
+    //Modal view controller
+    ModalViewController *modal;
 }
 
 @end
@@ -51,11 +55,11 @@
     
     self.searchBar.placeholder = @"search for an app...";
     
-    appIcons = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
-    appNames = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
-    appDevs = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
-    appStars = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
-    appPrices = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
+//    appIcons = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
+//    appNames = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
+//    appDevs = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
+//    appStars = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
+//    appPrices = [[NSMutableArray alloc]initWithObjects:@"poopName1",@"poopName2",@"poopName3",@"poopName4",@"poopName5", nil];
 }
 
 
@@ -161,6 +165,31 @@
     //do stuff
     
 }
+
+//segue stuff
+
+//thanks to Jonny Ramos for help on this piece
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    modal.appIcon  = [appIcons objectAtIndex:indexPath.item];
+    modal.appName  = [appNames objectAtIndex:indexPath.item];
+    modal.appDev   = [appDevs objectAtIndex:indexPath.item];
+    modal.appPrice = [appPrices objectAtIndex:indexPath.item];
+    modal.appStars = [appStars objectAtIndex:indexPath.item];
+//    modal.appDescription = [appDescriptions objectAtIndex:indexPath.item];
+    
+    [modal setLabels];
+    
+
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ShowModalView"]) {
+        modal = segue.destinationViewController;
+        
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
